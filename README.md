@@ -1,0 +1,2 @@
+# RichTextAreaSupportForTaskComment
+RICH TEXT AREA SUPPORT FOR TASK COMMENT
