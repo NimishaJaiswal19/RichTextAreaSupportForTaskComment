@@ -1,0 +1,55 @@
+.THIS .slds-rich-text-area__content {
+    height: 100%;
+    width: 95%;
+}
+.THIS .slds-text-longform li ul{
+	margin-bottom: 0;
+}
+.THIS .slds-text-longform li ol{
+	margin-bottom: 0;
+}
+.THIS .slds-text-longform p{
+	margin-bottom: 0;
+}
+.THIS .slds-text-longform ol{
+	margin-bottom: 0;
+}
+.THIS .slds-text-longform ul{
+	margin-bottom: 0;
+}
+.THIS .editTaskModal .slds-modal__container{ 
+    height : 100%; 
+    width: 90%;
+    max-width: 100%; 
+}
+.THIS .customAccordion .slds-accordion__section {
+    padding: 0;
+}
+.THIS .customAccordion .slds-accordion__summary-action {
+    background: rgb(243, 242, 242);
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    color: currentColor;
+    font-size: inherit;
+    padding: 0.5rem;
+    line-height: 0.875rem;
+}
+.THIS .customAccordion .slds-accordion__summary-action-icon {
+    fill: rgb(8, 7, 7);
+}
+.THIS .customAccordion .slds-icon-text-default {
+    fill: rgb(8, 7, 7);
+}
+.THIS .customAccordion .slds-button, .THIS .customAccordion .slds-button:hover, .THIS .customAccordion .slds-button:focus{
+    text-decoration: none;
+    cursor: default;
+}
+.THIS .customAccordion .editIcon .slds-icon-text-default{
+    fill: rgb(236, 235, 234);
+}
+.THIS .customAccordion .editIcon:hover .slds-icon-text-default,
+.THIS .customAccordion .editIcon:focus .slds-icon-text-default{
+    fill: rgb(0, 109, 204);
+    cursor: pointer;
+}

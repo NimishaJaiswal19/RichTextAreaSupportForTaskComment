@@ -1,0 +1,73 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader" 
+                controller="EditTaskCommentController">
+    <aura:attribute name="taskComments" type="String" default =""/>
+    <aura:attribute name="taskCommentsOld" type="String"/>
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="taskCommentRecord" type="Task_Comment__c" />
+    <aura:attribute name="CommentEditMode" type="Boolean" default="false"/>
+    <aura:attribute name="showSpinner" type="Boolean" default="false"/>
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
+
+    <aura:attribute name="isOpen" type="Boolean" default="true" />
+    <div>
+        <div class="slds-accordion__list-item customAccordion">
+            <section class="{!'slds-accordion__section '+ if(v.isOpen, 'slds-is-open', '')}">
+                <div class="slds-accordion__summary">
+                    <h2 class="slds-accordion__summary-heading slds-text-heading_small">
+                        <button onclick="{!c.handleClick}" class="slds-button slds-button_reset slds-accordion__summary-action">
+                            <lightning:icon class="slds-accordion__summary-action-icon slds-m-right_x-small" aura-id="iconchevrondown" iconName="utility:chevrondown" size="xx-small" alternativeText="Up"/>
+                            <span class="slds-truncate" title="Edit Task Comment" data-aura-rendered-by="380:0">Task Comment</span>
+                        </button>
+                    </h2>
+                </div>
+                <div class="slds-accordion__content">
+                    <div class="slds-p-horizontal--large slds-p-bottom--medium">
+                        <label class="slds-form-element__label" for="taskCommentsId">Comment</label>
+                        <div class="slds-form-element__control slds-grid" ondblclick="{!c.EditTaskComment}">
+                            <span class="slds-form-element__static slds-grow">
+                                <!-- <ui:outputRichText class="slds-text-longform" value="{!v.taskComments}" 
+                                                aura:id="taskCommentsId"/><br/> -->
+                                <lightning:formattedRichText class="slds-text-longform" 
+                                                             value="{!v.taskComments}" 
+                                                             aura:id="taskCommentsId"/> 
+                            </span>
+                            <button onclick="{!c.EditTaskComment}" class="slds-button editIcon slds-button_icon slds-cell-edit__button slds-m-left_x-small" tabindex="0" title="Edit Task Comment">
+                                <lightning:icon iconName="utility:edit" size="xx-small" alternativeText="edit"/>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <aura:if isTrue="{!v.CommentEditMode}">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" 
+                        aria-describedby="modal-content-id-1" class="editTaskModal slds-modal slds-fade-in-open">
+                <aura:if isTrue="{!v.showSpinner}">
+                    <lightning:spinner alternativeText="Loading" size="medium" variant="brand"/>
+                </aura:if>
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.closeEditTaskCommentModal}">
+                            
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <h2 class="slds-text-heading_medium">Edit Comment</h2>
+                    </header>
+                    
+                    <div class="slds-modal__content slds-p-horizontal--medium slds-p-top--medium slds-p-bottom--medium">
+                        <div>
+                            <label class="slds-form-element__label" for="taskCommentsId">Comment</label>
+                            <lightning:inputRichText value="{!v.taskComments}" aura:id="taskCommentsId"/> 
+                        </div>
+                    </div>
+                    
+                    <footer class="slds-modal__footer">
+                        <button class="slds-button slds-button--neutral" onclick="{!c.closeEditTaskCommentModal}">Cancel</button>
+                        <button class="slds-button slds-button--brand slds-p-left--small" onclick="{!c.saveTaskComment}">Save</button>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if>
+    </div>
+</aura:component>
